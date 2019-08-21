@@ -9,6 +9,7 @@ const Login = () => import(/* webpackChunkName: "login" */ './views/Login')
 const Home = () => import(/* webpackChunkName: "home" */ './views/Home')
 const About = () => import(/* webpackChunkName: "about" */ './views/About')
 const Contact = () => import(/* webpackChunkName: "contact" */ './views/Contact')
+const GeoLocation = () => import(/* webpackChunkName: "geo-location" */ './views/GeoLocation')
 
 Vue.use(Router)
 
@@ -24,7 +25,8 @@ const router = new Router({
       children: [
         { path: '/home', component: Home },
         { path: '/about', component: About },
-        { path: '/contact', component: Contact }
+        { path: '/contact', component: Contact },
+        { path: '/geo-location', component: GeoLocation },
       ]
     },
     { path: '/login', component: Login, meta: { authPage: true } }

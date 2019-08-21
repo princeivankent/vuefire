@@ -61,40 +61,15 @@
         </b-card>
       </b-col>
     </b-row>
+
+    <b-toast id="my-toast" variant="danger" solid>
+      <div slot="toast-title" class="d-flex flex-grow-1 align-items-baseline">
+        <b-img blank blank-color="#ff5555" class="mr-2" width="12" height="12"></b-img>
+        <strong class="mr-auto">Notice!</strong>
+        <small class="text-muted mr-2">42 seconds ago</small>
+      </div>
+      This is the content of the toast.
+      It is short and to the point.
+    </b-toast>
   </div>
 </template>
-
-<script>
-import { mapGetters } from 'vuex';
-
-export default {
-  name: 'Login',
-  data: () => ({
-    form: {
-      email: '',
-      password: ''
-    },
-    show: true
-  }),
-  computed: mapGetters('user', [
-    'authenticationStatus'
-  ]),
-  methods: {
-    onSubmit() {
-      this.$store.dispatch('user/loginAction', this.form);
-    },
-
-    onReset(evt) {
-      evt.preventDefault()
-      // Reset our form values
-      this.form.email = ''
-      this.form.password = ''
-      // Trick to reset/clear native browser form validation state
-      this.show = false
-      this.$nextTick(() => {
-        this.show = true
-      })
-    }
-  }
-}
-</script>

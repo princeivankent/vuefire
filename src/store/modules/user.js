@@ -6,7 +6,7 @@ const user = {
     login: false,
     loginErrorCode: '',
     loginErrorMessage: '',
-    loginSuccess: '',
+    loginSuccessMessage: '',
     registration: false,
     registrationErrorCode: '',
     registrationErrorMessage: '',
@@ -15,7 +15,12 @@ const user = {
   },
 
   getters: {
-    getUserDetails: state => state.userDetails
+    getUserDetails: state => state.userDetails,
+    authenticationStatus: state => ({
+      login: state.login,
+      loginErrorMessage: state.loginErrorMessage,
+      loginSuccessMessage: state.loginSuccessMessage
+    })
   },
 
   mutations: {
@@ -23,21 +28,21 @@ const user = {
       state.login = true;
       state.loginErrorCode = '';
       state.loginErrorMessage = '';
-      state.loginSuccess = '';
+      state.loginSuccessMessage = '';
     },
 
     SET_LOGIN_ERROR: (state, payload) => {
       state.login = false;
       state.loginErrorCode = payload.code;
       state.loginErrorMessage = payload.message;
-      state.loginSuccess = '';
+      state.loginSuccessMessage = '';
     },
 
     SET_LOGIN_SUCCESS: (state, payload) => {
       state.login = false;
       state.loginErrorCode = '';
       state.loginErrorMessage = '';
-      state.loginSuccess = payload;
+      state.loginSuccessMessage = payload;
     },
 
     SET_REGISTRATION_INIT: (state) => {
@@ -97,17 +102,20 @@ const user = {
     loginAction({commit}, payload) {
       commit('SET_LOGIN_INIT');
       const { email, password } = payload
+      const msg = 'User successfully logged in!';
 
       auth.signInWithEmailAndPassword(email, password)
-      .then(response => {
-        commit('SET_USER_DETAILS', { uid: response.user.uid })
+      .then(() => {
+        commit('SET_LOGIN_SUCCESS', msg)
         router.replace('/home')
       })
       .catch(error => commit('SET_LOGIN_ERROR', error))
     },
 
-    logoutAction: () => {
-      auth.signOut().then(() => router.replace('/login'))
+    logoutAction: () => auth.signOut().then(() => router.replace('/login')),
+
+    setUserDetailsAction({commit}, payload) {
+      commit('SET_USER_DETAILS', payload)
     }
   }
 }

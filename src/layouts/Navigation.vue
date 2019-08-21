@@ -1,6 +1,6 @@
 <template>
   <b-navbar toggleable="lg" type="dark" variant="success">
-    <b-navbar-brand href="#">Udemy</b-navbar-brand>
+    <b-navbar-brand href="#">VueFire</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -8,7 +8,8 @@
       <b-navbar-nav>
         <b-nav-item to="home" active-class="active">Home</b-nav-item>
         <b-nav-item to="about" active-class="active">About</b-nav-item>
-        <b-nav-item to="contact" active-class="active">Contact {{ $store.getters['user/getUserDetails']['uid'] }}</b-nav-item>
+        <b-nav-item to="contact" active-class="active">Contact</b-nav-item>
+        <b-nav-item to="geo-location" active-class="active">Geolocation</b-nav-item>
       </b-navbar-nav>
 
       <!-- Right aligned nav items -->
