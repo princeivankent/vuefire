@@ -38,7 +38,8 @@ router.beforeEach((to, from, next) => {
     const authPage = to.matched.some(x => x.meta.authPage)
     const currentUser = auth.currentUser
 
-    if (requiresAuth && !currentUser) next('/login')
+    if (requiresAuth && !currentUser) 
+      next('/login')
     else if (currentUser) {
       if (authPage) {
         next('/home');

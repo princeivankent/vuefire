@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import { firestorePlugin } from 'vuefire'
 import BootstrapVue from 'bootstrap-vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 import router from './router'
@@ -8,6 +9,7 @@ import { auth } from './config/firebase'
 import App from './App.vue'
 
 Vue.use(BootstrapVue)
+Vue.use(firestorePlugin)
 
 Vue.config.productionTip = false
 

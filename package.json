@@ -1,5 +1,5 @@
 {
-  "name": "vuefire",
+  "name": "vue-fire",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -15,6 +15,7 @@
     "vue": "^2.6.10",
     "vue-router": "^3.1.2",
     "vue2-google-maps": "^0.10.7",
+    "vuefire": "^2.1.2",
     "vuex": "^3.1.1"
   },
   "devDependencies": {

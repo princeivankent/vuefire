@@ -13,6 +13,13 @@
         <b-card-text>
           Some quick example text to build on the card title and make up the bulk of the card's content.
         </b-card-text>
+        
+        Users
+        <ul>
+          <li v-for="(user, index) in users" :key="index">
+            {{ user.name }}
+          </li>
+        </ul>
 
         <b-button href="#" variant="primary">Go somewhere</b-button>
       </b-card>
@@ -21,7 +28,19 @@
 </template>
 
 <script>
+import { usersCollection, db } from '../config/firebase'
+
 export default {
-  name: 'Home'
+  name: 'Home',
+  data() {
+    return {
+      users: []
+    }
+  },
+  firestore() {
+    return {
+      users: db.collection('users')
+    }
+  }
 }
 </script>

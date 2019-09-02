@@ -1,5 +1,9 @@
 import firebase from 'firebase'
-import 'firebase/firestore'
+
+//--> Production
+// import firebase from 'firebase'
+// import 'firebase/firestore'
+// import 'firebase/auth'
 
 const config = {
   apiKey: "AIzaSyCzbCxRk9ognu8iXctoegk1ptf87toSVr0",
